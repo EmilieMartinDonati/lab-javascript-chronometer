@@ -18,6 +18,8 @@ const splitsElement = document.getElementById('splits');
 
 const listElements = document.createElement("li");
 
+
+
 let intervaldId = null;
 
 function printTime() {
@@ -53,7 +55,7 @@ function printSplit() {
 
 function clearSplits() {
   chronometer.reset();
-  splitsElement.removeChild(li);
+  splitsElement.innerHTML = "";
 }
 
 function setStopBtn() {
