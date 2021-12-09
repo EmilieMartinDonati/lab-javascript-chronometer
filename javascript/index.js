@@ -1,10 +1,7 @@
 
-
-
-const Chronometer = require("./chronometer");
+// const Chronometer = require("./chronometer");
 
 const chronometer = new Chronometer();
-const chronometer1 = new Chronometer();
 
 // get the buttons:
 const btnLeftElement = document.getElementById('btnLeft');
@@ -19,7 +16,7 @@ const milDecElement = document.getElementById('milDec');
 const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
-listElements = document.CreateElement("li");
+const listElements = document.createElement("li");
 
 let intervaldId = null;
 
@@ -49,13 +46,14 @@ function printMilliseconds() {
 }
 
 function printSplit() {
+  const listElements = document.createElement("li");
   listElements.textContent = `${chronometer.computeTwoDigitNumber(chronometer.getMinutes())}:${chronometer.computeTwoDigitNumber(chronometer.getSeconds())}`;
   splitsElement.appendChild(listElements);
 }
 
 function clearSplits() {
   chronometer.reset();
-  splitsElement.removeChild(listElements);
+  splitsElement.removeChild(li);
 }
 
 function setStopBtn() {
@@ -68,6 +66,7 @@ function setStopBtn() {
 function setSplitBtn() {
   btnRightElement.classList.remove("reset");
   btnRightElement.classList.add("split");
+  btnRightElement.textContent = "SPLIT";
 }
 
 function setStartBtn() {
@@ -80,6 +79,7 @@ function setStartBtn() {
 function setResetBtn() {
   btnRightElement.classList.remove("split");
   btnRightElement.classList.add("reset");
+  btnRightElement.textContent = "RESET";
 }
 
 // Start/Stop Button
@@ -91,6 +91,7 @@ btnLeftElement.addEventListener('click', () => {
    else if (btnLeftElement.classList.contains("start")) {
      setStopBtn();
      setSplitBtn();
+     printTime();
    }
 });
 
